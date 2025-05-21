@@ -1,0 +1,5 @@
+# These owners will be the default owners for everything in the repo
+* @AdrianContoso @lucycontoso1
+
+# Specific ownership for adoption-related files
+/src/main/java/org/springframework/samples/petclinic/adoption/ @lucycontoso1
