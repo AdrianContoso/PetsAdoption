@@ -56,6 +56,11 @@
             <span th:text="#{findOwners}">Find owners</span>
           </li>
 
+          <li th:replace="~{::menuItem ('/adoption','adoption','adoption page','heart','Adopt Me')}">
+            <span class="fa fa-heart" aria-hidden="true"></span>
+            <span>Adopt Me</span>
+          </li>
+
           <li th:replace="~{::menuItem ('/vets.html','vets','veterinarians','th-list',#{vets})}">
             <span class="fa fa-th-list" aria-hidden="true"></span>
             <span th:text="#{vets}">Veterinarians</span>

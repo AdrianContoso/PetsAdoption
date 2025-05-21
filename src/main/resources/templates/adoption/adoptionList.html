@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'adoption')}">
+
+<body>
+  <h2>Pet Adoption</h2>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p class="lead">
+        Hi there! I'm looking for my forever home. We have many wonderful pets here waiting to be part of your family.
+        Each of us has a unique personality and so much love to give. Whether you're looking for a playful puppy,
+        a gentle cat, or an exotic friend, you might just find your perfect match here. Will you take one of us home today?
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div th:if="${message}" class="alert alert-success" role="alert">
+        <p th:text="${message}">message</p>
+      </div>
+      <table id="adoptablePets" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Species</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="pet : ${adoptablePets}">
+            <td th:text="${pet.species}"></td>
+            <td th:text="${pet.gender}"></td>
+            <td th:text="${pet.age}"></td>
+            <td th:text="${pet.description}"></td>
+            <td>
+              <form th:if="${!pet.adopted}" th:action="@{/adoption/{id}/adopt(id=${pet.id})}" method="post" style="margin: 0;">
+                <button class="btn btn-success" type="submit">Adopt Me!</button>
+              </form>
+              <span th:if="${pet.adopted}" class="badge bg-secondary">Already Adopted</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
